@@ -153,7 +153,7 @@ Shader "Hidden/PostProcessing/Uber"
                 half4 bloom = UpsampleBox(TEXTURE2D_PARAM(_BloomTex, sampler_BloomTex), uvDistorted, _BloomTex_TexelSize.xy, _Bloom_Settings.x);
                 #endif
 
-                // UVs should be Distort(uv * _Bloom_DirtTileOffset.xy + _Bloom_DirtTileOffset.zw)
+                // UVs should be ¡Distort(uv * _Bloom_DirtTileOffset.xy + _Bloom_DirtTileOffset.zw)!
                 // but considering we use a cover-style scale on the dirt texture the difference
                 // isn't massive so we chose to save a few ALUs here instead in case lens distortion
                 // is active
