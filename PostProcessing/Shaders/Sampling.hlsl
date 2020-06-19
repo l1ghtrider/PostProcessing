@@ -12,7 +12,6 @@
 // . . I . J . .
 // . K . L . M .
 // . . . . . . .
-// l1ght: ACKM 0.03125 * 1 * 4 + BFLH 0.03125 * 2 * 4 + DEIJ 0.125 * 4 + G 0.03125 * 4 = 1
 half4 DownsampleBox13Tap(TEXTURE2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
 {
     half4 A = SAMPLE_TEXTURE2D(tex, samplerTex, UnityStereoTransformScreenSpaceTex(uv + texelSize * float2(-1.0, -1.0)));
@@ -36,6 +35,7 @@ half4 DownsampleBox13Tap(TEXTURE2D_ARGS(tex, samplerTex), float2 uv, float2 texe
     o += (B + C + H + G) * div.y;
     o += (F + G + L + K) * div.y;
     o += (G + H + M + L) * div.y;
+    // l1ght: DEIJ 0.125 * 4 + ACKM 0.03125 * 4 + BFLH 0.0625(0.03125 * 2) * 4 + G 0.125(0.03125 * 4) = 1
 
     return o;
 }
